@@ -3,45 +3,45 @@
 
 def canUnlockAll(boxes):
 
-    #  Open and empty keys from first box
+    # get keys from firstbox and empty
     keys = boxes[0]
     boxes[0] = []
+
+    usedKeys = []
     opening = True
 
-    #  main loop
+    # repeat
     while opening:
-
-        opening = False
-        #  Open and empty keys from boxes with current keys
+        # throw away dupe keys
+        keys = list(dict.fromkeys(keys))
+        newKeys = []
+        # check if already opend
         for key in keys:
-            if boxes[key] is []:
+            if key in usedKeys:
                 continue
 
-            keys += boxes[key]
+            # check if key is valid
+            try:
+                box = boxes[key]
+            except:
+                continue
+
+            # goto box with key and empty. Add keys to unused keys
+            newKeys += box
             boxes[key] = []
-            opening = True
 
-        # check if all boxes are empty
-        empty = True
-        for box in boxes:
-            if box != []:
-                empty = False
-                break
+        # Update keys
+        usedKeys += keys
+        keys = newKeys
 
-        if empty:
-            return True
+        # check if still have keys
+        if keys == []:
+            opening = False
 
-        # check if boxes with keys are empty
-        empty = True
-        for key in keys:
-            if boxes[key] != []:
-                empty = False
-
-        if empty:
+    # check if all boxes are empty
+    # print("boxes", boxes)
+    for box in boxes:
+        if box != []:
             return False
 
-        # Throw away duplicate keys
-        keys = list(dict.fromkeys(keys))
-
-    #  Default return
-    return False
+    return True
