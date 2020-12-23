@@ -3,7 +3,9 @@
 
 #include <stddef.h>
 #include <stdlib.h>
+#include <stdio.h>
 
+#define MAX 1000
 /**
  * struct binary_tree_s - Binary tree node
  *
@@ -26,5 +28,9 @@ void binary_tree_print(const binary_tree_t *);
 
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 binary_tree_t *create_new_tree(int value);
+
+heap_t *heap_insert(heap_t **root, int value);
+heap_t *get_parent(heap_t *root);
+heap_t *swap(heap_t *parent, heap_t *child, heap_t **root);
 
 #endif /* _BINARY_TREES_H_ */
