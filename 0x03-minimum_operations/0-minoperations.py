@@ -49,6 +49,28 @@ def get_half(n):
     return half if half % 1 == 0 else None
 
 
+def get_third(n):
+    """
+    --------------
+    Method: get_third
+    --------------
+    Description:
+        Finds and returns the third
+        of a number if that third
+        is a solid integer or
+        returns None.
+    Args:
+        @n: Integer
+            Finding the third of this
+            number.
+    --------------
+    """
+    third = n / 3
+    if third == 1:
+        return None
+    return third if third % 1 == 0 else None
+
+
 def get_nums(n, array):
     """
     --------------
@@ -75,17 +97,21 @@ def get_nums(n, array):
     """
     if n < 1:
         return array
-
+    n = int(n)
     half = get_half(n)
     root = get_root(n)
+    third = get_third(n)
 
     if half:
         array = get_nums((n-half), array)
     elif root:
         array = get_nums((n-root), array)
+    elif third:
+        array = get_nums((n-third), array)
     else:
-        array = get_nums((n-1), array)
-    array.append(int(n))
+        array = list(range(1, n))
+
+    array.append(n)
     return array
 
 
@@ -122,5 +148,5 @@ def minOperations(n):
             clip.copy()
 
         clip.paste()
-
+    # print(nums)
     return clip.get_operations()
