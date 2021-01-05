@@ -98,13 +98,11 @@ def get_nums(n, array):
     if n <= 1:
         return array
 
-    step = 0
+    step = int(n / 2)
     array.append(n)
     while n > 1:
 
         for factor in range(2, n):
-            if step == 0:
-                step = int(n / factor)
             if n % step == 0 and n / step != 1:
                 break
             step = int(n / factor)
