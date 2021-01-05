@@ -96,7 +96,7 @@ def minOperations(n):
     --------------
     Description:
         Counts the number of actions
-        need to get from 1 to N using
+        needed to get from 1 to N using
         a Copy Paste process.
         Return the count of actions or
         0 if no number of actions results
