@@ -114,11 +114,11 @@ def minOperations(n):
 
     for index, num in enumerate(nums):
         try:
-            n_1 = nums[index + 1]
+            next_num = nums[index + 1]
         except IndexError:
             break
 
-        if num * 2 == n_1:
+        if num * 2 == next_num:
             clip.copy()
 
         clip.paste()
