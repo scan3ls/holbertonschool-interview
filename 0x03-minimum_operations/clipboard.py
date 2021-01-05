@@ -20,6 +20,22 @@ class Clipboard:
         self.__clipboard = None
         self.__operations = 0
 
+    def __str__(self):
+        """
+        --------------
+        Method: __str__
+        --------------
+        Description:
+            Return a string representaion
+            of the clipboard.
+        Args:
+            None
+        """
+        string = ""
+        for i in range(self.__h):
+            string += "H"
+        return string
+
     def copy(self):
         """
         --------------
