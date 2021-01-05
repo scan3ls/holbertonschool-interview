@@ -17,7 +17,7 @@ class Clipboard:
         --------------
         """
         self.__h = 1
-        self.__clipboard = None
+        self.__clipboard = 0
         self.__operations = 0
 
     def __str__(self):
