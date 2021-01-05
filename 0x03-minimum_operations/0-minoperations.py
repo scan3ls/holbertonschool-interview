@@ -139,7 +139,7 @@ def minOperations(n):
     nums = get_nums(n, nums)
     clip = Clipboard()
 
-    print(nums)
+    # print(nums)
     for index, num in enumerate(nums):
         # print(clip)
         try:
