@@ -4,7 +4,7 @@
 """
 
 
-def run(n):
+def run(num, value):
     """
     --------------
     Method: run
@@ -13,25 +13,38 @@ def run(n):
         Import and rum function minOperations
         Print out the results
     Args:
-        @n: Integer
+        @num: Integer
             Input argument for function
             minOperations
+        @value: Integer
+            The expected output given
+            num
     --------------
     """
-    minOperations = __import__('0-minoperations').minOperations
-    print(
-        "Min number of operations to reach {} characters: {}".format(
-            n, minOperations(n)
+    path = '0-minoperations'
+    minOperations = __import__(path).minOperations
+    output = minOperations(num)
+    if (output == value):
+        print("Test Passed!")
+    else:
+        print("\nTest Failed!")
+        string = "Num: {}\nExpected: {}\nGot: {}\n".format(
+            num, value, output
         )
-    )
-
+        print(string)
 
 # list of test values
-nums = [
-    1, 4, 12,
-    9, 16, 18,
-    100, 39, -19
-]
-nums.sort()
-for n in nums:
-    run(n)
+tests = {
+    -19: 0,
+    1: 0,
+    4: 4,
+    9: 6,
+    12: 7,
+    16: 8,
+    18: 8,
+    39: 16,
+    100: 14
+}
+
+for key in tests:
+    run(key, tests[key])
