@@ -33,6 +33,7 @@ def run(num, value):
         )
         print(string)
 
+
 # list of test values
 tests = {
     -19: 0,
