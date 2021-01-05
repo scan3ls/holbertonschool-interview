@@ -30,7 +30,7 @@ def run(n):
 nums = [
     1, 4, 12,
     9, 16, 18,
-    -100
+    -100, 39
 ]
 nums.sort()
 for n in nums:
