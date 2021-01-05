@@ -95,23 +95,24 @@ def get_nums(n, array):
             returned
     --------------
     """
-    if n < 1:
+    if n <= 1:
         return array
-    n = int(n)
-    half = get_half(n)
-    root = get_root(n)
-    third = get_third(n)
 
-    if half:
-        array = get_nums((n-half), array)
-    elif root:
-        array = get_nums((n-root), array)
-    elif third:
-        array = get_nums((n-third), array)
-    else:
-        array = list(range(1, n))
-
+    step = 0
     array.append(n)
+    while n > 1:
+
+        for factor in range(2, n):
+            if step == 0:
+                step = int(n / factor)
+            if n % step == 0 and n / step != 1:
+                break
+            step = int(n / factor)
+
+        n -= step
+        array.append(n if n > 0 else 1)
+
+    array.sort()
     return array
 
 
@@ -138,7 +139,9 @@ def minOperations(n):
     nums = get_nums(n, nums)
     clip = Clipboard()
 
+    print(nums)
     for index, num in enumerate(nums):
+        # print(clip)
         try:
             next_num = nums[index + 1]
         except IndexError:
@@ -148,5 +151,4 @@ def minOperations(n):
             clip.copy()
 
         clip.paste()
-    # print(nums)
     return clip.get_operations()
