@@ -1,5 +1,7 @@
 #include "sandpiles.h"
 
+#define MAX_VALUE 3
+
 /**
  * not_Stable - Check if a grid is Stable( No value is over 3)
  *@grid: grid to check
@@ -13,7 +15,7 @@ bool not_Stable(int grid[3][3])
 
 	for (i1 = 0; i1 < 3; i1++)
 		for (i2 = 0; i2 < 3; i2++)
-			if (grid[i1][i2] > 4)
+			if (grid[i1][i2] > MAX_VALUE)
 				return (true);
 	return (false);
 }
@@ -82,7 +84,7 @@ void get_template(int grid[3][3], int template[3][3])
 	{
 		for (i2 = 0; i2 < 3; i2++)
 		{
-			if (grid[i1][i2] >= 4)
+			if (grid[i1][i2] > MAX_VALUE)
 				template[i1][i2] = 1;
 			else
 				template[i1][i2] = 0;
