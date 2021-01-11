@@ -1,10 +1,5 @@
 #include "sandpiles.h"
 
-bool not_Stable(int grid[3][3]);
-void add_Grids(int grid1[3][3], int grid2[3][3]);
-void stablize(int grid[3][3]);
-void grid_print(int grid[3][3]);
-
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
     add_Grids(grid1, grid2);
