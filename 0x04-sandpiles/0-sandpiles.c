@@ -1,14 +1,28 @@
 #include "sandpiles.h"
 
+/**
+ * sandpiles_sum - gets the sum of sandpiles grids and prints
+ *                 the new grid per iteration
+ *@grid1: first grid
+ *@grid2: second grid
+ */
+
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
     add_Grids(grid1, grid2);
-    while( not_Stable(grid1) )
+    while( stabilizeable(grid1) )
     {
         grid_print(grid1);
-        stablize(grid1);
+        stabilize(grid1);
     }
 }
+
+/**
+ * not_Stable - Check if a grid is Stable( No value is over 3)
+ *@grid: grid to check
+ *
+ * Return: True / False
+ */
 
 bool not_Stable(int grid[3][3])
 {
@@ -21,6 +35,13 @@ bool not_Stable(int grid[3][3])
     return(false);
 }
 
+/**
+ * add_Grids - add two 3x3 grids
+ *
+ *@grid1: first Grid
+ *@grid2: second Grid
+ */
+
 void add_Grids(int grid1[3][3], int grid2[3][3])
 {
     int i1, i2;
@@ -30,7 +51,13 @@ void add_Grids(int grid1[3][3], int grid2[3][3])
             grid1[i1][i2] = grid1[i1][i2] + grid2[i1][i2];
 }
 
-void stablize(int grid[3][3])
+/**
+ * stabilize - Reduce values over 3 in grid by sending
+ *             1 to the surrounding indecies
+ *@grid: grid to stabilize
+ */
+
+void stabilize(int grid[3][3])
 {
     int i1, i2;
 
@@ -54,6 +81,11 @@ void stablize(int grid[3][3])
         }
     }
 }
+
+/**
+ * grid_print - prints the 3x3 grid
+ *@grid: grid to print 
+ */
 
 void grid_print(int grid[3][3])
 {
