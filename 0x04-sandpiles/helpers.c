@@ -9,13 +9,13 @@
 
 bool not_Stable(int grid[3][3])
 {
-    int i1, i2;
+	int i1, i2;
 
-    for(i1 = 0; i1 < 3; i1++)
-        for(i2 = 0; i2 < 3; i2++)
-            if(grid[i1][i2] > 4)
-                return(true);
-    return(false);
+	for (i1 = 0; i1 < 3; i1++)
+		for (i2 = 0; i2 < 3; i2++)
+			if (grid[i1][i2] > 4)
+				return (true);
+	return (false);
 }
 
 /**
@@ -27,42 +27,43 @@ bool not_Stable(int grid[3][3])
 
 void add_Grids(int grid1[3][3], int grid2[3][3])
 {
-    int i1, i2;
+	int i1, i2;
 
-    for(i1 = 0; i1 < 3; i1++)
-        for(i2 = 0; i2 < 3; i2++)
-            grid1[i1][i2] = grid1[i1][i2] + grid2[i1][i2];
+	for (i1 = 0; i1 < 3; i1++)
+		for (i2 = 0; i2 < 3; i2++)
+			grid1[i1][i2] = grid1[i1][i2] + grid2[i1][i2];
 }
 
 /**
  * stabilize - Reduce values over 3 in grid by sending
  *             1 to the surrounding indecies
  *@grid: grid to stabilize
+ *@template: template of indicies in grid to reduce
  */
 
 void stabilize(int grid[3][3], int template[3][3])
 {
-    int i1, i2;
+	int i1, i2;
 
-    for(i1 = 0; i1 < 3; i1++)
-    {
-        for(i2 = 0; i2 < 3; i2++)
-        {
-            if(template[i1][i2] == 1)
-            {
-                grid[i1][i2] -= 4;
-                
-                if(i1 != 0)
-                    grid[i1 - 1][i2] += 1;
-                if(i1 != 2)
-                    grid[i1 + 1][i2] += 1;
-                if(i2 != 0)
-                    grid[i1][i2 - 1] += 1;
-                if(i2 != 2)
-                    grid[i1][i2 + 1] += 1;
-            }
-        }
-    }
+	for (i1 = 0; i1 < 3; i1++)
+	{
+		for (i2 = 0; i2 < 3; i2++)
+		{
+			if (template[i1][i2] == 1)
+			{
+				grid[i1][i2] -= 4;
+
+				if (i1 != 0)
+					grid[i1 - 1][i2] += 1;
+				if (i1 != 2)
+					grid[i1 + 1][i2] += 1;
+				if (i2 != 0)
+					grid[i1][i2 - 1] += 1;
+				if (i2 != 2)
+					grid[i1][i2 + 1] += 1;
+			}
+		}
+	}
 }
 
 /**
@@ -75,16 +76,16 @@ void stabilize(int grid[3][3], int template[3][3])
 
 void get_template(int grid[3][3], int template[3][3])
 {
-    int i1, i2;
+	int i1, i2;
 
-    for(i1 = 0; i1 < 3; i1++)
-    {
-        for(i2 = 0; i2 < 3; i2++)
-        {
-            if(grid[i1][i2] >= 4)
-                template[i1][i2] = 1;
-            else
-                template[i1][i2] = 0;
-        }
-    }
+	for (i1 = 0; i1 < 3; i1++)
+	{
+		for (i2 = 0; i2 < 3; i2++)
+		{
+			if (grid[i1][i2] >= 4)
+				template[i1][i2] = 1;
+			else
+				template[i1][i2] = 0;
+		}
+	}
 }
