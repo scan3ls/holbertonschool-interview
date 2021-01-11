@@ -10,7 +10,7 @@
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
     add_Grids(grid1, grid2);
-    while( stabilizeable(grid1) )
+    while( not_Stable(grid1) )
     {
         grid_print(grid1);
         stabilize(grid1);
