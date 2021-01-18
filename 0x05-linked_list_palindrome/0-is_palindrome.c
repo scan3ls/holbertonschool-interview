@@ -25,9 +25,13 @@ int is_palindrome(listint_t **head)
 	for (; start < end; start++, end--)
 	{
 		if (list[start] != list[end])
+		{
+			free(list);
 			return (false);
+		}
 	}
 
+	free(list);
 	return (true);
 }
 
