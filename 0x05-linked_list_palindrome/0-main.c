@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include "lists.h"
 
+#define TEST_LENGTH 10
+
+void build_test_list(listint_t **head, int *test);
+
 /**
  * main - check the code for Holberton School students.
  *
@@ -9,19 +13,15 @@
  */
 int main(void)
 {
+    int test[TEST_LENGTH] = {
+        1, 17, 972, 50, 98,
+        98, 50, 972, 17, 1
+    };
+
     listint_t *head;
 
     head = NULL;
-    add_nodeint_end(&head, 1);
-    add_nodeint_end(&head, 17);
-    add_nodeint_end(&head, 972);
-    add_nodeint_end(&head, 50);
-    add_nodeint_end(&head, 98);
-    add_nodeint_end(&head, 98);
-    add_nodeint_end(&head, 50);
-    add_nodeint_end(&head, 972);
-    add_nodeint_end(&head, 17);
-    add_nodeint_end(&head, 1);
+    build_test_list(&head, test);
     print_listint(head);
 
     if (is_palindrome(&head) == 1)
@@ -32,4 +32,12 @@ int main(void)
     free_listint(head);
 
     return (0);
+}
+
+void build_test_list( listint_t **head, int *test)
+{
+    int index;
+
+    for( index = 0; index < TEST_LENGTH; index++ )
+        add_nodeint_end(head, test[index]);
 }
