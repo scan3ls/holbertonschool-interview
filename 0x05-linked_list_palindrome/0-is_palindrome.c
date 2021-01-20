@@ -12,7 +12,6 @@
 
 int is_palindrome(listint_t **head)
 {
-	// int length = get_length(head);
 	int start = 0;
 	int end;
 	int list[5000];
