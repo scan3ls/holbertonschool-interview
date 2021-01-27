@@ -26,7 +26,6 @@ def print_codes(codes):
 
 
 if __name__ == "__main__":
-    # import fileinput
     import sys
 
     total_size = 0
@@ -38,18 +37,23 @@ if __name__ == "__main__":
     }
 
     buffer = []
-    for line in sys.stdin:
-        buffer.append(line)
+    try: 
+        for line in sys.stdin:
+            buffer.append(line)
 
-        if len(buffer) == 10:
+            if len(buffer) == 10:
 
-            for line in buffer:
-                code, size = get_response(line)
-                if code in codes.keys():
-                    codes[code] += 1
-                total_size += size
+                for line in buffer:
+                    code, size = get_response(line)
+                    if code in codes.keys():
+                        codes[code] += 1
+                    total_size += size
 
-            print("File size:", total_size)
-            print_codes(codes)
+                print("File size:", total_size)
+                print_codes(codes)
 
-            buffer = []
+                buffer = []
+    finally:
+        print("File size:", total_size)
+        print_codes(codes)
+        sys.stdout.flush()
