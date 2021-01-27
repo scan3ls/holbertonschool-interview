@@ -26,7 +26,8 @@ def print_codes(codes):
 
 
 if __name__ == "__main__":
-    import fileinput
+    # import fileinput
+    import sys
 
     total_size = 0
     codes = {
@@ -37,7 +38,7 @@ if __name__ == "__main__":
     }
 
     buffer = []
-    for line in fileinput.input():
+    for line in sys.stdin:
         buffer.append(line)
 
         if len(buffer) == 10:
