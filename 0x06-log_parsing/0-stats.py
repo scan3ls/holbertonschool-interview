@@ -25,6 +25,20 @@ def print_codes(codes):
         ))
 
 
+def clear_buffer(total_size, buffer):
+    for line in buffer:
+        code, size = get_response(line)
+        if code in codes.keys():
+            codes[code] += 1
+        total_size += size
+
+    print("File size:", total_size)
+    print_codes(codes)
+
+    buffer = []
+    return total_size, buffer
+
+
 if __name__ == "__main__":
     import sys
 
@@ -37,23 +51,12 @@ if __name__ == "__main__":
     }
 
     buffer = []
-    try: 
+    try:
         for line in sys.stdin:
             buffer.append(line)
 
             if len(buffer) == 10:
-
-                for line in buffer:
-                    code, size = get_response(line)
-                    if code in codes.keys():
-                        codes[code] += 1
-                    total_size += size
-
-                print("File size:", total_size)
-                print_codes(codes)
-
-                buffer = []
+                total_size, buffer = clear_buffer(total_size, buffer)
     finally:
-        print("File size:", total_size)
-        print_codes(codes)
+        clear_buffer(total_size, buffer)
         sys.stdout.flush()
