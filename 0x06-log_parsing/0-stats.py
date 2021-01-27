@@ -10,6 +10,7 @@ def get_response(line):
 
     return int(code), int(size)
 
+
 def print_codes(codes):
     """ Print occurances of responses by status code """
 
@@ -23,9 +24,10 @@ def print_codes(codes):
             code, codes[code]
         ))
 
+
 if __name__ == "__main__":
     import fileinput
-    
+
     total_size = 0
     codes = {
         200: 0, 301: 0,
@@ -50,5 +52,3 @@ if __name__ == "__main__":
             print_codes(codes)
 
             buffer = []
-
-
