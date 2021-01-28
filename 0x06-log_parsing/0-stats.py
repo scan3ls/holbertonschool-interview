@@ -6,9 +6,17 @@ def verify(line):
     """ verify line format """
     import re
 
-    pattern = r".+ - .+ \"GET /projects/260 HTTP/1.1\" [0-9]+ [1-255]"
-    match = re.match(pattern, line)
+    pattern = r"{} - \[.+\] {} [0-9]+ [0-9]+".format(
+        r"(?:[0-9]{1,3}\.){3}[0-9]{1,3}",
+        r"\"GET \/projects\/260 HTTP\/1.1\""
+    )
 
+    match = re.match(pattern, line)
+    # if match:
+    #     print("Line: ", line)
+    #     print("Match: ", match)
+    # else:
+    #     print("\t No Match: ", pattern)
     return False if match else True
 
 
@@ -64,8 +72,8 @@ if __name__ == "__main__":
     buffer = []
     try:
         for line in sys.stdin:
-            # if verify(line):
-            #     continue
+            if verify(line):
+                continue
 
             buffer.append(line)
             if len(buffer) == 10:
