@@ -32,7 +32,7 @@ def get_response(line):
 def print_codes(codes):
     """ Print occurances of responses by status code """
 
-    code_list = [200, 301, 401, 403, 404, 405, 500]
+    code_list = [200, 301, 400, 401, 403, 404, 405, 500]
     for code in code_list:
 
         if codes[code] == 0:
