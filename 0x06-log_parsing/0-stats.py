@@ -64,8 +64,8 @@ if __name__ == "__main__":
     buffer = []
     try:
         for line in sys.stdin:
-            if verify(line):
-                continue
+            # if verify(line):
+            #     continue
 
             buffer.append(line)
             if len(buffer) == 10:
