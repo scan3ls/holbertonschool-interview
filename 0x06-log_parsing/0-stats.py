@@ -2,6 +2,16 @@
 """ Generate a log of internet request responses"""
 
 
+def verify(line):
+    """ verify line format """
+    import re
+
+    pattern = r".+ - .+ \"GET /projects/260 HTTP/1.1\" [0-9]+ [1-255]"
+    match = re.match(pattern, line)
+
+    return False if match else True
+
+
 def get_response(line):
     """ Get response code and file size from input """
     line = line.split()
@@ -26,6 +36,7 @@ def print_codes(codes):
 
 
 def clear_buffer(total_size, buffer):
+    """ Prints and Clears buffer """
     for line in buffer:
         code, size = get_response(line)
         if code in codes.keys():
@@ -53,8 +64,10 @@ if __name__ == "__main__":
     buffer = []
     try:
         for line in sys.stdin:
-            buffer.append(line)
+            if verify(line):
+                continue
 
+            buffer.append(line)
             if len(buffer) == 10:
                 total_size, buffer = clear_buffer(total_size, buffer)
     finally:
