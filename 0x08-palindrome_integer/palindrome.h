@@ -16,7 +16,7 @@ typedef struct num_s
 {
 	unsigned long n;
 	int length;
-	char digits[MAX_SIZE];
+	int digits[MAX_SIZE];
 } num_t;
 
 /**
