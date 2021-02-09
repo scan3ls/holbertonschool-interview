@@ -1,7 +1,5 @@
 #include "palindrome.h"
 
-#define MAX_SIZE 20 /* Max array size for unsigned long*/
-
 /**
  * is_palindrome - [ DRIVER ] for checking if n is a palindrome
  *@n: unsigned long int to check
@@ -11,52 +9,46 @@
 
 int is_palindrome(unsigned long n)
 {
-	int length;
-	char number[MAX_SIZE] = {0};
+	Number num = { n, 0, {0} };
 	bool result;
 
-	length = ltoa(number, n);
-	result = check_palindrome(number, length);
+	ltoa(&num);
+	result = check_palindrome(&num);
 
 	return (result);
 }
 
 /**
  *	ltoa - converts long to array while counting number length
- *@number: container array to fill
- *@n: long number to convert
+ *@num: long number to convert
  *
- * Return: Length of the number
  */
 
-int ltoa(char *number, unsigned long n)
+void ltoa(Number *num)
 {
-	int length;
+	unsigned long n = num->n;
 
-	for (length = 0; n > 0; length++, n /= 10)
+	for (num->length = 0; n > 0; num->length++, n /= 10)
 	{
-		number[length] = n % 10;
+		num->number[num->length] = n % 10;
 	}
-
-	return (length);
 }
 
 /**
  * check_palindrome - checks if number is a palindrome
- *@number: array containing numbers
- *@length: lenght of array to check from index 0
+ *@num: number to check
  *
  * Return: true false
  */
 
-bool check_palindrome(char *number, int length)
+bool check_palindrome(Number *num)
 {
 	int start = 0;
-	int end = length - 1;
+	int end = num->length - 1;
 
 	while (start < end)
 	{
-		if (number[start] != number[end])
+		if (num->number[start] != num->number[end])
 			return (false);
 		start++;
 		end--;
