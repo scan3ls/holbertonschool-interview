@@ -9,7 +9,7 @@
 
 int is_palindrome(unsigned long n)
 {
-	Number num = { n, 0, {0} };
+	num_t num = { n, 0, {0} };
 	bool result;
 
 	ltoa(&num);
@@ -24,13 +24,13 @@ int is_palindrome(unsigned long n)
  *
  */
 
-void ltoa(Number *num)
+void ltoa(num_t *num)
 {
 	unsigned long n = num->n;
 
 	for (num->length = 0; n > 0; num->length++, n /= 10)
 	{
-		num->number[num->length] = n % 10;
+		num->digits[num->length] = n % 10;
 	}
 }
 
@@ -41,14 +41,14 @@ void ltoa(Number *num)
  * Return: true false
  */
 
-bool check_palindrome(Number *num)
+bool check_palindrome(num_t *num)
 {
 	int start = 0;
 	int end = num->length - 1;
 
 	while (start < end)
 	{
-		if (num->number[start] != num->number[end])
+		if (num->digits[start] != num->digits[end])
 			return (false);
 		start++;
 		end--;

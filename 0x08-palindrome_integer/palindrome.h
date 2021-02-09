@@ -6,18 +6,18 @@
 #define MAX_SIZE 20 /* Max array size for unsigned long*/
 
 /**
- * struct Number - contains number data
+ * struct num_s - contains number data
  *@n: value of number as unsigned long
  *@length: number of digits
- *@number: array container for the digits
+ *@digits: array container for the digits
  */
 
-typedef struct Number
+typedef struct num_s
 {
 	unsigned long n;
 	int length;
-	char number[MAX_SIZE];
-} Number;
+	char digits[MAX_SIZE];
+} num_t;
 
 /**
  * enum boolean - defines true false booleans
@@ -34,7 +34,7 @@ typedef int bool;
 
 /* 0-is_palindrome.c */
 int is_palindrome(unsigned long n);
-void ltoa(Number *num);
-bool check_palindrome(Number *num);
+void ltoa(num_t *num);
+bool check_palindrome(num_t *num);
 
 #endif /* PALINDROME_H*/
