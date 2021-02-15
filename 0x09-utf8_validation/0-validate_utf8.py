@@ -6,10 +6,9 @@
 
 def validUTF8(data):
     """ Validator """
-    for num in data:
-        b = "{0:b}".format(num)
-
-        if len(b) > 8:
-            return False
+    try:
+        bytes(data)
+    except ValueError:
+        return False
 
     return True
