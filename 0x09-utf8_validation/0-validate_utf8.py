@@ -8,17 +8,15 @@ def validUTF8(data):
     """ Validator """
 
     while (data):
-        character = getCharacter(data)
+        isValid = getCharacter(data)
 
-        if character is False:
+        if isValid is False:
             return False
 
     return True
 
 
 def getCharacter(data):
-    octet_seq = []
-
     num = data.pop(0)
     if num < 0:
         return False
@@ -26,9 +24,7 @@ def getCharacter(data):
     byte = "{:08b}".format(num)
 
     if byte[0] == '0':
-        return byte
-
-    octet_seq.append(byte)
+        return True
 
     start = byte.split('0')[0]
 
@@ -49,6 +45,4 @@ def getCharacter(data):
         if byte[0:2] != "10":
             return False
 
-        octet_seq.append(byte)
-
-    return octet_seq
+    return True
