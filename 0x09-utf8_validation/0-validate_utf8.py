@@ -17,6 +17,7 @@ def validUTF8(data):
 
 
 def getCharacter(data):
+    """ << >>  """
     num = data.pop(0)
     if num < 0:
         return False
