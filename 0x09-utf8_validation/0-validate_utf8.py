@@ -21,6 +21,9 @@ def getCharacter(data):
     if byte[0] == '0':
         return byte
 
+    if byte == "11110000":
+        return False
+
     octet_seq.append(byte)
 
     start = byte.split('0')[0]
