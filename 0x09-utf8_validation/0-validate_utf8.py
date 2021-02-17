@@ -16,13 +16,14 @@ def validUTF8(data):
 
 def getCharacter(data):
     octet_seq = []
-    byte = "{:08b}".format(data.pop(0))
+    num = data.pop(0)
+    if num < 0:
+        return False
+
+    byte = "{:08b}".format(num)
 
     if byte[0] == '0':
         return byte
-
-    if byte == "11110000":
-        return False
 
     octet_seq.append(byte)
 
@@ -34,7 +35,10 @@ def getCharacter(data):
     for _ in range(length):
         if data == []:
             return False
-        byte = "{:08b}".format(data.pop(0))
+        num = data.pop(0)
+        if num < 0:
+            return False
+        byte = "{:08b}".format(num)
         if byte[0:2] != "10":
             return False
 
