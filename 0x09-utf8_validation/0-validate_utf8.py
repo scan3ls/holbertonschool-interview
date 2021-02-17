@@ -7,42 +7,18 @@
 def validUTF8(data):
     """ Validator """
 
-    while (data):
-        isValid = getCharacter(data)
-
-        if isValid is False:
+    line = []
+    for i in data:
+        if i < 0:
             return False
-
-    return True
-
-
-def getCharacter(data):
-    num = data.pop(0)
-    if num < 0:
+        try:
+            line.append( i.to_bytes(1, 'big') )
+        except:
+            line.append( i.to_bytes(2, 'big') )
+    line = b''.join(line)
+    try:
+        line.decode('utf-8')
+    except UnicodeDecodeError as e:
+        # print(line, e)
         return False
-
-    byte = "{:08b}".format(num)
-
-    if byte[0] == '0':
-        return True
-
-    start = byte.split('0')[0]
-
-    length = start.count('1') - 1
-    if length == 0 or length >= 4:
-        return False
-
-    for _ in range(length):
-
-        if data == []:
-            return False
-
-        num = data.pop(0)
-        if num < 0:
-            return False
-
-        byte = "{:08b}".format(num)
-        if byte[0:2] != "10":
-            return False
-
     return True
