@@ -6,8 +6,8 @@ Main file for testing
 validUTF8 = __import__('0-validate_utf8').validUTF8
 
 # valid bytes
-single_byte   = int("01000000", 2)
-continue_byte = int("10100000", 2)
+single_byte   = int("01000010", 2)
+continue_byte = int("10000010", 2)
 two_byte      = int("11010000", 2)
 three_byte    = int("11101000", 2)
 four_byte     = int("11110100", 2)
@@ -19,12 +19,12 @@ not_overlong  = [
 five_byte     = int("11111000", 2)
 full_byte     = int("11111111", 2)
 over_byte     = int("111110000", 2)
-# Euro Sign
+# Euro Sign 342 202 254.
 overlong_byte = [
-    int("11110000", 2),
-    int("10000010", 2),
-    int("10000010", 2),
-    int("10101100", 2)
+    int("11110000", 2),  # 240
+    int("10000010", 2),  # 202
+    int("10000010", 2),  # 202
+    int("10101100", 2)   # 254
 ]
 
 print(
@@ -34,7 +34,7 @@ print(
 )
 print("Valid tests: Return Should = True")
 
-data = [80, 121, 116, 104, 111, 110, 32, 105, 115, 32, 99, 111, 111, 108, -33]
+data = [80, 121, 116, 104, 111, 110, 32, 105, 115, 32, 99, 111, 111, 108, 33]
 print("\nGiven single bytes\n\t", validUTF8(data))
 
 data = [
@@ -59,17 +59,15 @@ data = [
 print("\nComplete 3-byte characters\n\t", validUTF8(data))
 
 data = [
-    four_byte, continue_byte, continue_byte, continue_byte,
-    four_byte, continue_byte, continue_byte, continue_byte,
-    single_byte
+    four_byte, continue_byte, continue_byte, continue_byte
 ]
 print("\nComplete 4-byte characters\n\t", validUTF8(data))
 
 data = []
 print("\nEmpty data set\n\t", validUTF8(data))
 
-data = not_overlong
-print("\nNot overlong encoded character\n\t", validUTF8(data))
+# data = not_overlong
+# print("\nNot overlong encoded character\n\t", validUTF8(data))
 
 # ===============================================================
 print("\n===================================")
@@ -116,5 +114,8 @@ print("\nAll bits are 1\n\t", validUTF8(data))
 data = [over_byte]
 print("\nbyte more than 8 bits\n\t", validUTF8(data))
 
-data = overlong_byte
-print("\noverlong encoding\n\t", validUTF8(data))
+# data = overlong_byte
+# print("\noverlong encoding\n\t", validUTF8(data))
+
+data = [-1]
+print("\nnegative byte\n\t", validUTF8(data))
