@@ -12,9 +12,9 @@ def validUTF8(data):
         if i < 0:
             return False
         try:
-            line.append( i.to_bytes(1, 'big') )
-        except:
-            line.append( i.to_bytes(2, 'big') )
+            line.append(i.to_bytes(1, 'big'))
+        except OverflowError:
+            line.append(i.to_bytes(2, 'big'))
     line = b''.join(line)
     try:
         line.decode('utf-8')
