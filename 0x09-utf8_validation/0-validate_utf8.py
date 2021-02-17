@@ -6,6 +6,10 @@
 
 def validUTF8(data):
     """ Validator """
+
+    if data == []:
+        return False
+
     while (data):
         character = getCharacter(data)
         if character is False:
