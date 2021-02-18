@@ -111,11 +111,11 @@ print("\nCharacter longer than 4 bytes\n\t", validUTF8(data))
 data = [full_byte]
 print("\nAll bits are 1\n\t", validUTF8(data))
 
-data = [over_byte]
-print("\nbyte more than 8 bits\n\t", validUTF8(data))
+# data = [over_byte]
+# print("\nbyte more than 8 bits\n\t", validUTF8(data))
 
-# data = overlong_byte
-# print("\noverlong encoding\n\t", validUTF8(data))
+data = overlong_byte
+print("\noverlong encoding\n\t", validUTF8(data))
 
 data = [-1]
 print("\nnegative byte\n\t", validUTF8(data))
