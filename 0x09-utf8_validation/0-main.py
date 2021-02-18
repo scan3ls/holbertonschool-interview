@@ -18,7 +18,7 @@ not_overlong  = [
 #Invalid bytes
 five_byte     = int("11111000", 2)
 full_byte     = int("11111111", 2)
-over_byte     = int("111110000", 2)
+over_byte     = 512
 # Euro Sign 342 202 254.
 overlong_byte = [
     int("11110000", 2),  # 240
@@ -66,6 +66,9 @@ print("\nComplete 4-byte characters\n\t", validUTF8(data))
 data = []
 print("\nEmpty data set\n\t", validUTF8(data))
 
+data = [over_byte]
+print("\nbyte more than 8 bits\n\t", validUTF8(data))
+
 # data = not_overlong
 # print("\nNot overlong encoded character\n\t", validUTF8(data))
 
@@ -110,9 +113,6 @@ print("\nCharacter longer than 4 bytes\n\t", validUTF8(data))
 
 data = [full_byte]
 print("\nAll bits are 1\n\t", validUTF8(data))
-
-# data = [over_byte]
-# print("\nbyte more than 8 bits\n\t", validUTF8(data))
 
 data = overlong_byte
 print("\noverlong encoding\n\t", validUTF8(data))
