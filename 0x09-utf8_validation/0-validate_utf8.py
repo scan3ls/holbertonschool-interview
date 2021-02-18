@@ -13,7 +13,7 @@ def validUTF8(data):
         check if list of ints can be converted
         into valid UTF-8 character sequence
     Args:
-
+        list of ints
     --------------
     """
 
