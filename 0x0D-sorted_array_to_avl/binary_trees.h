@@ -1,5 +1,5 @@
-#ifndef _BINARY_TREES_H_
-#define _BINARY_TREES_H_
+#ifndef BINARY_TREES_H
+#define BINARY_TREES_H
 
 #include <stddef.h>
 #include <stdio.h>
@@ -30,4 +30,4 @@ avl_t *build_avl(int *array, size_t size);
 
 void binary_tree_print(const binary_tree_t *tree);
 
-#endif /* _BINARY_TREES_H_ */
+#endif /* BINARY_TREES_H */
