@@ -1,8 +1,5 @@
 #include "binary_trees.h"
 
-void setParents(avl_t *node, avl_t *parent);
-avl_t *build_avl(int *array, size_t size);
-
 /**
  * sorted_array_to_avl - convert array to avl
  * @array: sorted array
@@ -75,11 +72,8 @@ avl_t *build_avl(int *array, size_t size)
 	int *array_left = malloc(sizeof((size / 2)) * sizeof(int));
 	int *array_right = malloc(sizeof((size / 2)) * sizeof(int));
 
-	if (array == NULL || size < 1)
-		return (NULL);
-
 	root = malloc(sizeof(avl_t));
-	if (root == NULL)
+	if (array == NULL || size < 1 || root == NULL)
 		return (NULL);
 
 	middle = array[range];
