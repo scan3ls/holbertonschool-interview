@@ -25,9 +25,7 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 			temp->express->index,
 			temp->express->n
 		);
-		if (temp->n == value)
-			return (temp);
-		if (temp->express->n > value)
+		if (temp->express->n >= value)
 			break;
 		temp = temp->express;
 	}
