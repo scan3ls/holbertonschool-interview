@@ -19,18 +19,24 @@ const payload = {
   method: 'GET'
 };
 
-request(payload, (err, res, data) => {
+request(payload, async (err, res, data) => {
   if (err) return;
 
   data = JSON.parse(data);
   const characters = data.characters;
 
-  for (const character in characters) {
-    request(characters[character], (err, res, data) => {
-      if (err) return;
-
-      data = JSON.parse(data);
-      console.log(data.name);
+  const makePromise = (url) => {
+    return new Promise(function (resolve, reject) {
+      request(url, (err, res, data) => {
+        if (err) reject(err);
+        else resolve(data);
+      });
     });
+  };
+
+  for (const character in characters) {
+    const res = await makePromise(characters[character]);
+    const data = JSON.parse(res);
+    console.log(data.name);
   }
 });
