@@ -33,5 +33,4 @@ request(payload, (err, res, data) => {
       console.log(data.name);
     });
   }
-
 });
