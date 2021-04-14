@@ -3,13 +3,13 @@
 
 
 def build_walls(walls):
-    """ find water levels """
+    """ build a 2d representation of the walls """
     levels = []
     for height in range(max(walls), 0, -1):
         level = []
         for index, wall in enumerate(walls):
             if wall >= height:
-                level.append(str(index))
+                level.append('|')
             else:
                 level.append(' ')
         levels.append(level.copy())
@@ -27,9 +27,10 @@ def rain(walls):
 
     for level in levels:
         s1 = "".join(level)
-        # print(s1.replace(' ', '_'))
+        # print(s1)  # Prints walls
+        # print(s1.replace(' ', '_'))  # walls w/ spaces as '_'
         s1 = s1.strip()
-        # print(s1.replace(' ', '_'))
+        # print(s1.replace(' ', '_'))  # print step to counting collected rain
         collected += s1.count(' ')
 
     return collected
