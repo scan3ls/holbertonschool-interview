@@ -26,10 +26,10 @@ class TheRain():
     def falls(self):
         """ Finds space between walls """
         self._find_levels()
-        print(self.walls)
+        # print(self.walls)
         for level in self._levels:
             s1 = "".join(level)
-            print(s1.replace(' ', '_'))
+            # print(s1.replace(' ', '_'))
             s1 = s1.strip()
             # print(s1.replace(' ', '_'))
             self._COLLECTED += s1.count(' ')
