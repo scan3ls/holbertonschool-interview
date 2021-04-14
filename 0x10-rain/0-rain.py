@@ -23,7 +23,8 @@ class TheRain():
                     level.append(' ')
             self._levels.append(level.copy())
 
-    def rain(self):
+    def falls(self):
+        """ Finds space between walls """
         self._find_levels()
         print(self.walls)
         for level in self._levels:
@@ -41,5 +42,5 @@ def rain(walls=[]):
         return 0
 
     the_rain = TheRain(walls)
-    result = the_rain.rain()
+    result = the_rain.falls()
     return result
