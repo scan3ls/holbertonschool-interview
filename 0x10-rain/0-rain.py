@@ -36,7 +36,7 @@ class TheRain():
         return self._COLLECTED
 
 
-def rain(walls=[]):
+def rain(walls):
     """ rain function """
     if walls == []:
         return 0
