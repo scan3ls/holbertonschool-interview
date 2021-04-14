@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Find space between walls"""
 
+
 def build_walls(walls):
     """ find water levels """
     levels = []
@@ -14,6 +15,7 @@ def build_walls(walls):
         levels.append(level.copy())
 
     return levels
+
 
 def rain(walls):
     """ rain function Finds space between walls """
