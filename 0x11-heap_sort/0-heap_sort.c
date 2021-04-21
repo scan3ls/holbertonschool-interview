@@ -11,6 +11,9 @@ void heap_sort(int *array, size_t size)
 {
 	int end = size - 1;
 
+	if (size < 2)
+		return;
+
 	heapify(array, size);
 
 	while (end > 0)
