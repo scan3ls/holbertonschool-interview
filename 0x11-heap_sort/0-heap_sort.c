@@ -28,7 +28,7 @@ void heap_sort(int *array, size_t size)
 
 void heapify(int *array, size_t size)
 {
-	int start = floor((size / 2) - 1);
+	int start = (size / 2) - 1;
 
 	while (--start >= 0)
 		siftDown(array, size, start, size - 1);

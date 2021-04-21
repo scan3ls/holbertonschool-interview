@@ -2,8 +2,6 @@
 #define _SORT_H_
 
 #include <stdlib.h>
-#include <stdio.h>
-#include <math.h>
 
 void print_array(const int *, size_t);
 void heap_sort(int *array, size_t size);
