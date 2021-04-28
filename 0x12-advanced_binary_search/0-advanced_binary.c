@@ -12,6 +12,9 @@ int advanced_binary(int *array, size_t size, int value)
 {
 	int found = search(array, size, value);
 
+	if (array == NULL)
+		return (-1);
+
 	return ((found >= 0) ? found : -1);
 }
 
