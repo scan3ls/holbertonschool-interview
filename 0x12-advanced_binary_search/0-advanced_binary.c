@@ -52,15 +52,10 @@ int search(int *array, size_t size, int value)
  */
 void print_array(int *array, size_t size)
 {
-	int i, j;
-	char *str = malloc(sizeof(int) * size);
+	int i;
 
-	for (i = 0, j = 0; i < (int)size; i++)
-	{
-		str[j++] = array[i] + '0';
-		str[j++] = ',';
-		str[j++] = ' ';
-	}
-	str[j - 2] = '\0';
-	printf("Searching in array: %s\n", str);
+	printf("Searching in array: ");
+	for (i = 0; i < (int)size - 1; i++)
+		printf("%d, ", array[i]);
+	printf("%d\n", array[i]);
 }
