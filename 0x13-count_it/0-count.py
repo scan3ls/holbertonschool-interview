@@ -28,8 +28,8 @@ def count_words(subreddit, word_list, **kwargs):
 
     url = [
         "https://www.reddit.com/r/",
-        f"{subreddit}/hot/.json",
-        f"?limit=100&after={after}"
+        "{}/hot/.json".format(subreddit),
+        "?limit=100&after={}".format(after)
     ]
     url = "".join(url)
     headers = {
@@ -73,4 +73,4 @@ def count_words(subreddit, word_list, **kwargs):
             max_index = values.index(max(values))
             key, value = keys.pop(max_index), values.pop(max_index)
             if value > 0:
-                print(f"{key}: {value}")
+                print("{}: {}".format(key, value))
