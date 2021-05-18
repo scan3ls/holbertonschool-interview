@@ -1,0 +1,2 @@
+gcc -Wall -pedantic -Werror -Wextra 0-mul.c _putchar.c -o mul
+./mul $1 $2
