@@ -1,4 +1,5 @@
 #include "holberton.h"
+/* #include <stdio.h> */
 
 void printError(void);
 void freeNumber(Number_t *);
@@ -127,12 +128,20 @@ Number_t *multiply(Number_t *num1, Number_t *num2)
 	{
 		currentBottomValue = bottom.value[bottomIndex] - '0';
 		tens = 0;
-
+		/* printf("\n"); */
 		for (topIndex = 0; topIndex < top.length; topIndex++)
 		{
 			currentTopValue = top.value[topIndex] - '0';
 			singleProduct = (currentBottomValue * currentTopValue) + tens;
-			tens = singleProduct / 10;
+/*
+ *			printf(
+ *				"%d * %d + %d = %d\n",
+ *				currentBottomValue,
+ *				currentTopValue,
+ *				tens,
+ *				singleProduct
+ *			);
+ */			tens = singleProduct / 10;
 			ones = singleProduct % 10;
 			subProduct2[sub2Index++] = '0' + ones;
 		}
@@ -141,8 +150,9 @@ Number_t *multiply(Number_t *num1, Number_t *num2)
 		{
 			subProduct2[sub2Index] = '0' + tens;
 		}
+		/* printf("%s + %s = ", subProduct1, subProduct2); */
 		add(subProduct1, subProduct2);
-
+		/* printf("%s\n", subProduct1); */
 		while (sub2Index > placeHolder)
 		{
 			subProduct2[sub2Index--] = 0;
@@ -209,5 +219,12 @@ void add(char *num1, char *num2)
 			num1Index = -1;
 		if (num2[num2Index] == 0 || num1Index == 0)
 			num2Index = -1;
+	}
+
+	if (carry > 0)
+	{
+		for (num1Index = 0; num1[num1Index] != '\0'; num1Index++)
+			;
+		num1[num1Index] = '0' + carry;
 	}
 }
