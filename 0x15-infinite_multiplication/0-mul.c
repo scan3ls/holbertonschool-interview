@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <stdio.h>
 
 void printError(void);
 void freeNumber(Number_t *);
@@ -16,6 +15,7 @@ Number_t *multiply(Number_t *, Number_t *);
 int main(int argc, char *argv[])
 {
 	Number_t *num1, *num2, *result;
+	int i;
 
 	if (argc != 3)
 	{
@@ -27,7 +27,11 @@ int main(int argc, char *argv[])
 
 	result = multiply(num1, num2);
 
-	printf("%s\n", result->value);
+	for (i = 0; i < result->length; i++)
+	{
+		_putchar(result->value[i]);
+	}
+	_putchar('\n');
 
 	freeNumber(num1);
 	freeNumber(num2);
@@ -98,7 +102,7 @@ Number_t *multiply(Number_t *num1, Number_t *num2)
 	char *subProduct1, *subProduct2, *temp;
 	int bottomIndex, topIndex, sub2Index = 0;
 	int currentBottomValue, currentTopValue;
-	int singleProduct, ones, tens = 0, placeHolder = 1;
+	int singleProduct, ones, tens, placeHolder = 1;
 
 	if (num1->length >= num2->length)
 	{
@@ -122,6 +126,7 @@ Number_t *multiply(Number_t *num1, Number_t *num2)
 	for (bottomIndex = 0; bottomIndex < bottom.length; bottomIndex++)
 	{
 		currentBottomValue = bottom.value[bottomIndex] - '0';
+		tens = 0;
 
 		for (topIndex = 0; topIndex < top.length; topIndex++)
 		{
