@@ -4,6 +4,7 @@
 void printError(void);
 void freeNumber(Number_t *);
 void add(char *, char *);
+int invalidDigits(Number_t *);
 Number_t *newNumber(char *);
 Number_t *multiply(Number_t *, Number_t *);
 
@@ -25,6 +26,11 @@ int main(int argc, char *argv[])
 
 	num1 = newNumber(argv[1]);
 	num2 = newNumber(argv[2]);
+
+	if (invalidDigits(num1) || invalidDigits(num2))
+	{
+		printError();
+	}
 
 	result = multiply(num1, num2);
 
@@ -52,6 +58,7 @@ void printError(void)
 	{
 		_putchar(msg[i]);
 	}
+	exit(98);
 }
 
 /**
@@ -227,4 +234,29 @@ void add(char *num1, char *num2)
 			;
 		num1[num1Index] = '0' + carry;
 	}
+}
+
+
+/**
+ * invalidDigits - checks an char array for non int characters
+ *@num: Number_t number
+ *
+ * Return: 1 if has non 0-9 characters else 0
+ */
+int invalidDigits(Number_t *num)
+{
+	int index, digit;
+	char *digits = num->value;
+
+	for (index = 0; index < num->length; index++)
+	{
+		digit = digits[index] - '0';
+		if (digit < 0)
+			return (1);
+
+		if (digit > 9)
+			return (1);
+	}
+
+	return (0);
 }
