@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-from copy import copy
 
 
 def rotate_2d_matrix(matrix):
