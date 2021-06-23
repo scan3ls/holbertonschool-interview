@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Return fewest number of coins for change """
 
+
 def invalidArguments(coins, total):
     """ validate args"""
     if isinstance(coins, list) is False:
@@ -10,8 +11,7 @@ def invalidArguments(coins, total):
     if total <= 0:
         return True
 
-    all_ints = True if list(map(lambda x: isinstance(x, int), coins)).count(False) == 0 else False
-    if all_ints is False:
+    if list(map(lambda x: isinstance(x, int), coins)).count(False):
         return True
 
     return False
