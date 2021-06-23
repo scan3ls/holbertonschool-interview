@@ -27,10 +27,8 @@ def makeChange(coins, total):
 
     while coins != []:
         divisor = coins[0]
-        if isinstance(divisor, int) is False:
-            continue
         if divisor <= 0:
-            continue
+            break
 
         if total < divisor:
             coins.pop(0)
@@ -48,3 +46,4 @@ if __name__ == "__main__":
     print(makeChange([1, 'a', -1], 100))
     print(makeChange([1, 25, 2], 37))
     print(makeChange([1256, 54, 48, 16, 102], 1453))
+    print(makeChange([1, 25, 0], 37))
