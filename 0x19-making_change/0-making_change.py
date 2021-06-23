@@ -21,24 +21,22 @@ def makeChange(coins, total):
     if invalidArguments(coins, total):
         return 0
 
-    coins.sort()
-    coins.reverse()
-    counter = 0
+    sorted_coins = sorted(coins, reverse=True)
+    change = 0
 
-    while coins != []:
-        divisor = coins[0]
-        if divisor <= 0:
+    while sorted_coins != []:
+        coin = sorted_coins[0]
+        if coin <= 0:
             break
-
-        if total < divisor:
-            coins.pop(0)
+        if total < coin:
+            sorted_coins.pop(0)
             continue
 
-        result = int(total / divisor)
-        counter = counter + result
-        total = total - (result * divisor)
+        num_of_coin = int(total / coin)
+        change += num_of_coin
+        total -= (num_of_coin * coin)
 
-    return counter if total == 0 else -1
+    return change if total == 0 else -1
 
 if __name__ == "__main__":
     print(makeChange(1, 37))
