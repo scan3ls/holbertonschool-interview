@@ -5,7 +5,7 @@
  *@list: head node of type List
  *@str: value stored in List node
  *
- * Return: head of the list
+ * Return: new node created
  */
 
 List *add_node_end(List **list, char *str)
@@ -33,7 +33,7 @@ List *add_node_end(List **list, char *str)
 	new_node->prev = old_end;
 	new_node->next = (*list);
 
-	return (*list);
+	return (new_node);
 }
 
 /**
