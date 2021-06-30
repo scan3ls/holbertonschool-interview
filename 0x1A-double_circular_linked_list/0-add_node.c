@@ -8,12 +8,13 @@
  * Return: head of the list
  */
 
-List *add_node_end(List **list, char *str) {
+List *add_node_end(List **list, char *str)
+{
 	List *new_node = malloc(sizeof(List));
 	List *old_end;
 
-	if (!list && !new_node)
-		return(NULL);
+	if (!list || !new_node)
+		return (NULL);
 
 	new_node->str = copy(str);
 	if (*list == NULL)
@@ -22,7 +23,7 @@ List *add_node_end(List **list, char *str) {
 		new_node->next = new_node;
 
 		*list = new_node;
-		return(new_node);
+		return (new_node);
 	}
 
 	old_end = (*list)->prev;
@@ -32,7 +33,7 @@ List *add_node_end(List **list, char *str) {
 	new_node->prev = old_end;
 	new_node->next = (*list);
 
-	return(*list);
+	return (*list);
 }
 
 /**
@@ -43,14 +44,15 @@ List *add_node_end(List **list, char *str) {
  * Return: head of the list
  */
 
-List *add_node_begin(List **list, char *str) {
+List *add_node_begin(List **list, char *str)
+{
 	List *new_node = malloc(sizeof(List));
 
-	if(!list && !new_node)
+	if (!list || !new_node)
 		return(NULL);
 
 	new_node->str = copy(str);
-	if(*list == NULL)
+	if (*list == NULL)
 	{
 		new_node->prev = new_node;
 		new_node->next = new_node;
@@ -65,7 +67,7 @@ List *add_node_begin(List **list, char *str) {
 	}
 
 	*list = new_node;
-	return(new_node);
+	return (new_node);
 }
 
 /**
@@ -74,16 +76,17 @@ List *add_node_begin(List **list, char *str) {
  *
  * Return: copy of str
  */
-char *copy(char *str) {
+char *copy(char *str)
+{
 	int length, i;
 	char *str_copy;
 
-	for(length = 0; str[length] != '\0'; length++)
+	for (length = 0; str[length] != '\0'; length++)
 		;
 
 	str_copy = malloc(sizeof(char) * length);
-	for(i = 0; i < length; i++)
+	for (i = 0; i < length; i++)
 		str_copy[i] = str[i];
 
-	return(str_copy);
+	return (str_copy);
 }
