@@ -49,7 +49,7 @@ List *add_node_begin(List **list, char *str)
 	List *new_node = malloc(sizeof(List));
 
 	if (!list || !new_node)
-		return(NULL);
+		return (NULL);
 
 	new_node->str = copy(str);
 	if (*list == NULL)
