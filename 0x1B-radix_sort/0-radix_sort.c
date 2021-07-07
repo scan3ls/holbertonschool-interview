@@ -14,7 +14,10 @@ void radix_sort(int *array, size_t size)
 	int significant_figure = 1, sorting = 1;
 
 	if (size == 1)
+	{
+		free(copy_arr);
 		return;
+	}
 
 	while (sorting)
 	{
@@ -44,7 +47,7 @@ void radix_sort(int *array, size_t size)
 /**
  * copy - copy array into a copy dest
  *@array: array to copy
- *@copy: dest of copy
+ *@copy_arr: dest of copy
  *@size: size of both arrays
  * Return: void
  */
