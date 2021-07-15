@@ -4,20 +4,21 @@
 
 def find_water(grid, row, pos):
     """ findin' dah waza """
-    try:
-        up = 0 if grid[row - 1][pos] else 1
-    except IndexError:
+    if row - 1 < 0:
         up = 1
+    else:
+        up = 0 if grid[row - 1][pos] else 1
 
     try:
         down = 0 if grid[row + 1][pos] else 1
     except IndexError:
+        print('no down')
         down = 1
 
-    try:
+    if pos - 1 < 0:
+        left = 1
+    else:
         left = 0 if grid[row][pos - 1] else 1
-    except IndexError:
-        down = 1
 
     try:
         right = 0 if grid[row][pos + 1] else 1
@@ -37,11 +38,16 @@ def island_perimeter(grid):
     return shore
 
 if __name__ == "__main__":
+    # grid = [
+    #     [0, 0, 0, 0, 0, 0],
+    #     [0, 1, 0, 0, 0, 0],
+    #     [0, 1, 0, 0, 0, 0],
+    #     [0, 1, 1, 1, 0, 0],
+    #     [0, 0, 0, 0, 0, 0]
+    # ]
     grid = [
-        [0, 0, 0, 0, 0, 0],
-        [0, 1, 0, 0, 0, 0],
-        [0, 1, 0, 0, 0, 0],
-        [0, 1, 1, 1, 0, 0],
-        [0, 0, 0, 0, 0, 0]
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1]
     ]
     print(island_perimeter(grid))
