@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """ Find the perimeter of an island """
 
 def find_water(grid, row, pos):
