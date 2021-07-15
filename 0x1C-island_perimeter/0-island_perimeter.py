@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Find the perimeter of an island """
 
+
 def find_water(grid, row, pos):
     """ findin' dah waza """
     try:
@@ -24,6 +25,7 @@ def find_water(grid, row, pos):
         right = 1
 
     return up + down + left + right
+
 
 def island_perimeter(grid):
     """ Find the perimeter of an island """
