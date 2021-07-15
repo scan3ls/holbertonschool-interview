@@ -12,7 +12,6 @@ def find_water(grid, row, pos):
     try:
         down = 0 if grid[row + 1][pos] else 1
     except IndexError:
-        print('no down')
         down = 1
 
     if pos - 1 < 0:
