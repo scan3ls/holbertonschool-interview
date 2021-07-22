@@ -27,5 +27,7 @@ void binary_tree_print(const binary_tree_t *tree);
 
 int binary_tree_is_avl(const binary_tree_t *tree);
 int get_height(const binary_tree_t *tree);
+int is_BST(const binary_tree_t *tree, int low, int high);
+int is_AVL(const binary_tree_t *tree);
 
 #endif
