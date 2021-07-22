@@ -23,7 +23,7 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 int is_AVL(const binary_tree_t *tree)
 {
 	int leftHeight, rightHeight;
-	int balance, isBST;
+	int balance;
 	int isRightAVL, isLeftAVL;
 
 	if (!tree)
