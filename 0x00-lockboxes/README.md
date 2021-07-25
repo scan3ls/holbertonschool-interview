@@ -2,7 +2,6 @@
 
 This is a repository containing assignments for Holberton School.
 
-small change
 
 |FILES| DESCRIPTIONS|
 |---|---|
