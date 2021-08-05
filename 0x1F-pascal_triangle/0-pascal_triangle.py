@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ defines a function for return a list reprsentation of Pascal's triangle """
 
+
 def pascal_triangle(n):
     """ return a list representation of Pascal's triangle """
     if n <= 0:
