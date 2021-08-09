@@ -1,5 +1,6 @@
 #include "regex.h"
 #include <stdio.h>
+
 /**
  * regex_match - simple regex match using '.' and '*'
  * @str: string to search
@@ -9,33 +10,30 @@
  */
 int regex_match(char const *str, char const *pattern)
 {
-
-	if (str[0] == '\0' && pattern[0] == '\0')
-		return (1);
-
-	if (str[0] == '\0')
+	if (AT_END(str))
 	{
-		if (pattern[1] == '*')
+		if AT_END(pattern)
+			return (TRUE);
+		if (STAR_RULE(pattern))
 			return (regex_match(str, pattern+2));
-		if (pattern[0] == '.')
+		if (DOT_RULE(pattern))
 			return (regex_match(str, pattern+1));
 	}
 
-	// printf("%s - %s\n", str, pattern);
-
-	if (pattern[1] == '*')
+	if (STAR_RULE(pattern))
 	{
+		/* Assume char count of zero w/ star */
 		if (regex_match(str, pattern+2))
-			return (1);
+			return (TRUE);
 
-		if (str[0] == pattern[0] || pattern[0] == '.')
-			return regex_match(str+1, pattern);
+		if (SAME_CHAR(str, pattern) || DOT_RULE(pattern))
+			return (regex_match(str+1, pattern));
 
-		return regex_match(str, pattern+2);
+		return (regex_match(str, pattern+2));
 	}
 
-	if (str[0] != pattern[0] && pattern[0] != '.')
-		return (0);
+	if (NOT_SAME_CHAR(str, pattern) && NOT_DOT_RULE(pattern))
+		return (FALSE);
 
 	return (regex_match(str+1, pattern+1));
 }
