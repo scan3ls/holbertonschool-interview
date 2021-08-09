@@ -12,7 +12,7 @@ int regex_match(char const *str, char const *pattern)
 {
 	if (AT_END(str))
 	{
-		if AT_END(pattern)
+		if (AT_END(pattern))
 			return (TRUE);
 		if (STAR_RULE(pattern))
 			return (regex_match(str, pattern+2));
