@@ -15,25 +15,25 @@ int regex_match(char const *str, char const *pattern)
 		if (AT_END(pattern))
 			return (TRUE);
 		if (STAR_RULE(pattern))
-			return (regex_match(str, pattern+2));
+			return (regex_match(str, pattern + 2));
 		if (DOT_RULE(pattern))
-			return (regex_match(str, pattern+1));
+			return (FALSE);
 	}
 
 	if (STAR_RULE(pattern))
 	{
 		/* Assume char count of zero w/ star */
-		if (regex_match(str, pattern+2))
+		if (regex_match(str, pattern + 2))
 			return (TRUE);
 
 		if (SAME_CHAR(str, pattern) || DOT_RULE(pattern))
-			return (regex_match(str+1, pattern));
+			return (regex_match(str + 1, pattern));
 
-		return (regex_match(str, pattern+2));
+		return (regex_match(str, pattern + 2));
 	}
 
 	if (NOT_SAME_CHAR(str, pattern) && NOT_DOT_RULE(pattern))
 		return (FALSE);
 
-	return (regex_match(str+1, pattern+1));
+	return (regex_match(str + 1, pattern + 1));
 }
