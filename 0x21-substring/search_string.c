@@ -11,7 +11,7 @@
  */
 int compare(const void *a, const void *b)
 {
-    return (*(int *)a - *(int *)b);
+		return (*(int *)a - *(int *)b);
 }
 
 /**
@@ -25,23 +25,23 @@ int compare(const void *a, const void *b)
  * Return: void
  */
 void search_string(
-    char const *s, char *buff, int buff_size,
-    int step, int *indicies, int *n
+		char const *s, char *buff, int buff_size,
+		int step, int *indicies, int *n
 )
 {
-    int s_i;
+		int s_i;
 
-    for (s_i = 0; s[s_i] != '\0'; s_i += step)
-    {
-        if (match((s + s_i), buff, buff_size))
-        {
-            add_index(indicies, s_i);
-            (*n)++;
-        }
-    }
+		for (s_i = 0; s[s_i] != '\0'; s_i += step)
+		{
+				if (match((s + s_i), buff, buff_size))
+				{
+						add_index(indicies, s_i);
+						(*n)++;
+				}
+		}
 
-    qsort(indicies, *n, sizeof(int), compare);
-    *n = reduce(indicies, *n);
+		qsort(indicies, *n, sizeof(int), compare);
+		*n = reduce(indicies, *n);
 }
 
 /**
@@ -53,17 +53,17 @@ void search_string(
  */
 int match(char const *s1, char *s2, int size)
 {
-    int i;
+		int i;
 
-    for (i = 0; i < size; i++)
-    {
-        if(s1[i] != s2[i])
-        {
-            return (FALSE);
-        }
-    }
+		for (i = 0; i < size; i++)
+		{
+				if(s1[i] != s2[i])
+				{
+						return (FALSE);
+				}
+		}
 
-    return (TRUE);
+		return (TRUE);
 }
 
 /**
@@ -74,11 +74,11 @@ int match(char const *s1, char *s2, int size)
  */
 void add_index(int *indicies, int index)
 {
-    int i;
-    for (i = 0; indicies[i] != -1; i++)
-        ;
+		int i;
+		for (i = 0; indicies[i] != -1; i++)
+				;
 
-    indicies[i] = index;
+		indicies[i] = index;
 }
 
 /**
@@ -89,26 +89,26 @@ void add_index(int *indicies, int index)
  */
 int reduce(int *indicies, int n)
 {
-  int temp[n];
-  int i, j = 0;
+	int temp[n];
+	int i, j = 0;
 
-  if (n == 0 || n == 1)
-    return (n);
+	if (n == 0 || n == 1)
+		return (n);
 
-  for (i = 0; i < n - 1; i++)
-  {
-    if (indicies[i] != indicies[i + 1])
-    {
-      temp[j++] = indicies[i];
-    }
-  }
-  temp[j++] = indicies[n - 1];
+	for (i = 0; i < n - 1; i++)
+	{
+		if (indicies[i] != indicies[i + 1])
+		{
+			temp[j++] = indicies[i];
+		}
+	}
+	temp[j++] = indicies[n - 1];
 
 
-  for (i = 0; i < j; i++)
-  {
-    indicies[i] = temp[i];
-  }
+	for (i = 0; i < j; i++)
+	{
+		indicies[i] = temp[i];
+	}
 
-  return (j);
+	return (j);
 }
