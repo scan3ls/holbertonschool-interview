@@ -2,6 +2,7 @@
 
 #include "concat_words.c"
 #include "create_word.c"
+#include "search_string.c"
 
 /**
  * find_substring - finds all the possible substrings
@@ -19,26 +20,25 @@ int *find_substring(char const *s, char const **words, int nb_words, int *n)
 {
 	int i, *indices = malloc(sizeof(int) * MAX_INDICES);
 	char buff[255], **concat_words = get_concat_words(nb_words);
-	// int word_length = get_length(words);
-	// int buff_size = word_length * nb_words;
+	int word_length = get_length(words);
+	int buff_size = word_length * nb_words;
 
+	*n = 0;
 	for (i = 0; i < MAX_INDICES; i++)
 		indices[i] = -1;
 
 	for (i = 0; concat_words[i] != NULL; i++)
 	{
-		// printf("[%d] %s\n", i, concat_words[i]);
 		create_word(buff, concat_words[i], words);
-		printf("Searching for: %s\n", buff);
-		// search_string(s, buff, buff_size, word_length, indices, n);
+		search_string(s, buff, buff_size, word_length, indices, n);
+		// sort_and_reduce(indices, n);
 	}
-	(void)s;
+
 	/* FREE concat_words */
 	for (i = 0; i < MAX_WORD_COUNT; i++)
 		free(concat_words[i]);
 	free(concat_words);
 
-	*n = 0;
 	return (indices);
 }
 
