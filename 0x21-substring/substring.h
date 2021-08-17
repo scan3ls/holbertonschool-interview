@@ -21,6 +21,7 @@ void create_word(char *buff, char *schema, char const **words);
 /* search_string.c */
 void add_index(int *indices, int index);
 int match(char const *s1, char *s2, int size);
+int reduce(int *indicies, int n);
 void search_string(
     char const *s, char *buff, int buff_size,
     int step, int *indices, int *n

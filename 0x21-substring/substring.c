@@ -31,7 +31,6 @@ int *find_substring(char const *s, char const **words, int nb_words, int *n)
 	{
 		create_word(buff, concat_words[i], words);
 		search_string(s, buff, buff_size, word_length, indices, n);
-		// sort_and_reduce(indices, n);
 	}
 
 	/* FREE concat_words */

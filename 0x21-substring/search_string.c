@@ -4,18 +4,29 @@
 #define FALSE 0
 
 /**
- * search_str - search string s for indices with substring stored in buffer buff
+ * compare - compare function for quicksort
+ * @a: value a
+ * @b: value b
+ * Return: 1 , 0, -1
+ */
+int compare(const void *a, const void *b)
+{
+    return (*(int *)a - *(int *)b);
+}
+
+/**
+ * search_str - search string s for indicies with substring stored in buffer buff
  * @s: source string
  * @buff: pointer to substring
  * @buff_size: size of buff
  * @step: bytes to next substring in s
- * @indices: storage location for found indices
- * @n: pointer to the length of indices
+ * @indicies: storage location for found indicies
+ * @n: pointer to the length of indicies
  * Return: void
  */
 void search_string(
     char const *s, char *buff, int buff_size,
-    int step, int *indices, int *n
+    int step, int *indicies, int *n
 )
 {
     int s_i;
@@ -24,10 +35,13 @@ void search_string(
     {
         if (match((s + s_i), buff, buff_size))
         {
-            add_index(indices, s_i);
+            add_index(indicies, s_i);
             (*n)++;
         }
     }
+
+    qsort(indicies, *n, sizeof(int), compare);
+    *n = reduce(indicies, *n);
 }
 
 /**
@@ -44,7 +58,9 @@ int match(char const *s1, char *s2, int size)
     for (i = 0; i < size; i++)
     {
         if(s1[i] != s2[i])
+        {
             return (FALSE);
+        }
     }
 
     return (TRUE);
@@ -56,11 +72,43 @@ int match(char const *s1, char *s2, int size)
  * @index: index to add to indicies
  * Return: void
  */
-void add_index(int *indices, int index)
+void add_index(int *indicies, int index)
 {
     int i;
-    for (i = 0; indices[i] != -1; i++)
+    for (i = 0; indicies[i] != -1; i++)
         ;
 
-    indices[i] = index;
+    indicies[i] = index;
+}
+
+/**
+ * reduce - remove duplicate elements from array of ints
+ * @indicies: array to reduce
+ * @n: current lenth of indicies
+ * Return: new length of indicies as Int
+ */
+int reduce(int *indicies, int n)
+{
+  int temp[n];
+  int i, j = 0;
+
+  if (n == 0 || n == 1)
+    return (n);
+
+  for (i = 0; i < n - 1; i++)
+  {
+    if (indicies[i] != indicies[i + 1])
+    {
+      temp[j++] = indicies[i];
+    }
+  }
+  temp[j++] = indicies[n - 1];
+
+
+  for (i = 0; i < j; i++)
+  {
+    indicies[i] = temp[i];
+  }
+
+  return (j);
 }
