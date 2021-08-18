@@ -88,18 +88,18 @@ void zero_buff(int *buff, int size)
 /**
  * fill_buff - check words for matchs to current position in s
  * @buff: array of flags for matched word in words
- * @nb_words: number of words and size of buff
+ * @size: number of words and size of buff
  * @words: array of strings
  * @s: source string
  * @n: number of bytes to check
  *
  * Return: TRUE / False if the buffer is full
  */
-bool fill_buff(int *buff, int nb_words, char const **words, char const *s, size_t n)
+bool fill_buff(int *buff, int size, char const **words, char const *s, int n)
 {
 	int i;
 
-	for (i = 0; i < nb_words; i++)
+	for (i = 0; i < size; i++)
 	{
 		if (buff[i] == 0 && strncmp(s, words[i], n) == 0)
 		{
@@ -108,5 +108,5 @@ bool fill_buff(int *buff, int nb_words, char const **words, char const *s, size_
 		}
 	}
 
-	return (i == nb_words) ? TRUE : FALSE;
+	return ((i == size) ? TRUE : FALSE);
 }
