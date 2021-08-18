@@ -22,7 +22,7 @@ class Node:
         return children
 
     def __str__(self):
-        return f"{self.value}"
+        return "{}".format(self.value)
 
 def get_leaves(node, memo=[]):
     if len(node.children) == 0:
