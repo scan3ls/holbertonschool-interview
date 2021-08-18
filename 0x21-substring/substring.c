@@ -13,6 +13,10 @@ int *find_substring(char const *s, char const **words, int nb_words, int *n)
 {
 	int *indices = malloc(sizeof(int) * 1);
 
+	(void)s;
+	(void)words;
+	(void)nb_words;
+
 	*n = 1;
 	return (indices);
 }
