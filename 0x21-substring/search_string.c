@@ -89,7 +89,7 @@ void add_index(int *indicies, int index)
  */
 int reduce(int *indicies, int n)
 {
-	int temp[n];
+	int *temp = malloc(sizeof(int) * n);
 	int i, j = 0;
 
 	if (n == 0 || n == 1)
@@ -110,5 +110,6 @@ int reduce(int *indicies, int n)
 		indicies[i] = temp[i];
 	}
 
+	free(temp);
 	return (j);
 }
