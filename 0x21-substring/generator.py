@@ -40,7 +40,7 @@ num = int(arguments[1])
 root = Node([], [n for n in range(num)])
 leaves = get_leaves(root)
 
-with open('data.txt', 'w') as f:
+with open('word_schema_data.txt', 'w') as f:
     for leaf in leaves:
         f.write(":".join([str(n) for n in leaf]))
         f.write('\n')

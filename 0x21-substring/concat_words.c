@@ -24,7 +24,7 @@ char **get_concat_words(int nb_words)
 	system(cmd);
 	sleep(1);
 
-	fp = fopen("data.txt", "r");
+	fp = fopen("word_schema_data.txt", "r");
 	if (fp)
 	{
 		while(flag)
@@ -37,7 +37,7 @@ char **get_concat_words(int nb_words)
 			buff = malloc(sizeof(char) * 255);
 		}
 		fclose(fp);
-		remove("data.txt");
+		remove("word_schema_data.txt");
 	}
 
 	free(buff);
