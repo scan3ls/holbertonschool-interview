@@ -49,19 +49,30 @@ def isWinner(x, nums):
     """ function docs """
     players = ("Maria", "Ben")
     wins = [0, 0]
+    last_winner = None
 
     if x < 1 or len(nums) == 0:
         return None
 
-    for game_round in nums:
+    for game_round in set(nums):
         available_nums = list(filter(lambda n: n <= game_round, nums))
         reduced_nums = reduced(available_nums)
+        if game_round < 2:
+            wins[1] += 1
+            continue
         turns = len(reduced_nums)
         if (isMariaTurn(turns)):
             wins[1] += 1
         if (isBenTurn(turns)):
             wins[0] += 1
 
+        if wins[0] > wins[1]:
+            last_winner = players[0]
+        if wins[1] > wins[0]:
+            last_winner = players[1]
+
+    if wins[0] == wins[1]:
+        return last_winner
     return players[wins.index(max(wins))]
 
 # print("Winner: {}".format(isWinner(5, [2, 5, 1, 4, 3])))
