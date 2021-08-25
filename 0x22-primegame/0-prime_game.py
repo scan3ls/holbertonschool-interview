@@ -56,4 +56,4 @@ def isWinner(x, nums):
 
     return players[wins.index(max(wins))]
 
-print("Winner: {}".format(isWinner(5, [2, 5, 1, 4, 3])))
+# print("Winner: {}".format(isWinner(5, [2, 5, 1, 4, 3])))
