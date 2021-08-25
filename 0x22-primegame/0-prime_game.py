@@ -47,7 +47,7 @@ def reduced(nums):
 
 def isWinner(x, nums):
     """ function docs """
-    players = ("Marira", "Ben")
+    players = ("Maria", "Ben")
     wins = [0, 0]
 
     for game_round in nums:
