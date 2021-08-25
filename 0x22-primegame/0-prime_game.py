@@ -6,9 +6,11 @@ def isMariaTurn(turn):
     """ return's if Maria's turn """
     return turn % 2 == 0
 
+
 def isBenTurn(turn):
     """ returns if Ben's turn """
     return turn % 2 != 0
+
 
 def primesUpTo(num):
     """ return all prime numbers up to num """
@@ -22,9 +24,11 @@ def primesUpTo(num):
 
     return primes
 
+
 def reduced(nums):
     """ for n in nums reduce n if n is a multiple of prime number """
     primes = primesUpTo(max(nums))
+
     def isMultiple(n):
         """ map function """
         primes_sorted = sorted(primes, reverse=True)
@@ -39,6 +43,7 @@ def reduced(nums):
         reduced_nums.pop(0)
 
     return set(reduced_nums)
+
 
 def isWinner(x, nums):
     """ function docs """
