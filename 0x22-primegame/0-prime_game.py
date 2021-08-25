@@ -50,6 +50,9 @@ def isWinner(x, nums):
     players = ("Maria", "Ben")
     wins = [0, 0]
 
+    if x < 1 or len(nums) == 0:
+        return None
+
     for game_round in nums:
         available_nums = list(filter(lambda n: n <= game_round, nums))
         reduced_nums = reduced(available_nums)
